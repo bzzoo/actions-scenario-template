@@ -11,3 +11,6 @@ jobs:
         run: |
           echo hello world2
           echo hello github actions
+      - name: pr-synchronize
+        run: |
+          echo pr-synchronize
