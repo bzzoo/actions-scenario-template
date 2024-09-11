@@ -10,7 +10,7 @@ jobs:
   
   job2:
     runs-on: ubuntu-lastest
-    nedds: [job1]
+    needs: [job1]
     steps:
     - name: echo
       run: echo "job2 done"
@@ -19,11 +19,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: echo
-      run: echo "job3 doen"
+      run: echo "job3 done"
 
-  job2:
+  job4:
     runs-on: ubuntu-lastest
-    nedds: [job3]
+    needs: [job3]
     steps:
     - name: echo
       run: echo "job4 done"
