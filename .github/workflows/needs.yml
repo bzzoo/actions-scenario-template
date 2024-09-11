@@ -1,0 +1,29 @@
+name: needs
+on: push
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: echo
+      run: echo "job1 doen"
+  
+  job2:
+    runs-on: ubuntu-lastest
+    nedds: [job1]
+    steps:
+    - name: echo
+      run: echo "job2 done"
+  
+  job3:
+    runs-on: ubuntu-latest
+    steps:
+    - name: echo
+      run: echo "job3 doen"
+
+  job2:
+    runs-on: ubuntu-lastest
+    nedds: [job3]
+    steps:
+    - name: echo
+      run: echo "job4 done"
