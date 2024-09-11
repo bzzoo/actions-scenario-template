@@ -26,8 +26,8 @@ jobs:
       run: echo hello world
     - name: step2
       run: |
-      echo hello world2
-      echo hello github actions
+        echo hello world2
+        echo hello github actions
     - name: echo inputs
       run: |
         echo ${{ inputs.name }}
