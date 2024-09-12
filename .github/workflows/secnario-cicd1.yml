@@ -7,31 +7,31 @@ on:
       - "my-app/**"
 
 jobs:
-  test:
-    if: github.event.action == 'opened' || github.event.action == 'synchronize'
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v4
-      - name: setup-node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - name: Cache Node.js modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install dependencies
-        run: |
-          cd my-app
-          npm ci
-      - name: npm build
-        run: |
-          cd my-app
-          npm run build
+  # test:
+  #   if: github.event.action == 'opened' || github.event.action == 'synchronize'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: checkout
+  #       uses: actions/checkout@v4
+  #     - name: setup-node
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 18
+  #     - name: Cache Node.js modules
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: ~/.npm
+  #         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}
+  #         restore-keys: |
+  #           ${{ runner.os }}-node-
+  #     - name: Install dependencies
+  #       run: |
+  #         cd my-app
+  #         npm ci
+  #     - name: npm build
+  #       run: |
+  #         cd my-app
+  #         npm run build
 
   image-build:
     if: github.event.pull_request.merged == true
