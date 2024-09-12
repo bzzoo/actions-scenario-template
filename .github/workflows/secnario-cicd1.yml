@@ -101,23 +101,23 @@ jobs:
           helm upgrade --install my-app kubernetes/my-app --create-namespace --namespcae my-app-${{ vars.SUFFIX }} \
           --set image.tag=${{ github.sha }} \
           --set image.repository=${{ secrets.REGISTRY }}/${{ vars.REPOSITORY }}
-      - name: notify
-        if: always()
-        uses: slackapi/slack-github-aciton@v1.24.0
-        with:
-          payload: |
-            {
-              "text": "message",
-              "blocks" : [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrdwn"
-                    "text": "Enviroment : dev, Deploy Result : ${{ steps.status.outcome }}, Repository"
-                  }
-                }
-              ]
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+      # - name: notify
+      #   if: always()
+      #   uses: slackapi/slack-github-aciton@v1.24.0
+      #   with:
+      #     payload: |
+      #       {
+      #         "text": "message",
+      #         "blocks" : [
+      #           {
+      #             "type": "section",
+      #             "text": {
+      #               "type": "mrdwn"
+      #               "text": "Enviroment : dev, Deploy Result : ${{ steps.status.outcome }}, Repository"
+      #             }
+      #           }
+      #         ]
+      #       }
+      #   env:
+      #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      #     SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
